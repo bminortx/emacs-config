@@ -13,6 +13,7 @@
 		      coffee-mode
 		      color-theme
 		      color-theme-solarized
+		      column-marker
 		      dash
 		      deft
 		      desktop
@@ -32,7 +33,9 @@
 		      multi-term
 		      mustache-mode
 		      paredit
+		      pianobar
 		      popup
+		      powerline
 		      projectile
 		      protobuf-mode
 		      python
@@ -42,6 +45,7 @@
 		      sass-mode
 		      scss-mode
 		      solarized-theme
+		      twittering-mode
 		      volatile-highlights
 		      workgroups
 		      yaml-mode

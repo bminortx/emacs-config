@@ -110,6 +110,9 @@
 
 (global-set-key (kbd "C-M-y") 'replace-rectangle)
 
+(require 'column-marker)
+(add-hook 'c++-mode-hook (lambda () (interactive) (column-marker-1 80)))
+
 (require 'paredit)
 (setq my-lisp-par-hook #'(lambda ()
 			   (paredit-mode 1)

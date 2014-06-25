@@ -20,6 +20,7 @@
 		      expand-region
 		      exec-path-from-shell
 		      flycheck
+		      flycheck-google-cpplint
 		      gist
 		      groovy-mode
 		      haml-mode
@@ -38,7 +39,6 @@
 		      powerline
 		      projectile
 		      protobuf-mode
-		      python
 		      rainbow-mode
 		      ruby-mode
 		      ruby-tools

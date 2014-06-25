@@ -43,12 +43,12 @@
 (setq auto-mode-alist (cons '("\.v$" . coq-mode) auto-mode-alist))
 
 ;; Coq editing mode
-(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
-(load-file "~/.emacs.d/ProofGeneral-4.2/ProofGeneral-4.2/generic/proof-site.el")
+;;(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
+;;(load-file "~/.emacs.d/ProofGeneral-4.2/ProofGeneral-4.2/generic/proof-site.el")
 ;; Pianobar
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-10"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro Medium-10"))
 
 
 (cd "~/")

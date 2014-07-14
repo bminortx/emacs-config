@@ -77,7 +77,6 @@
                        'flymake-create-temp-with-folder-structure))))
 (add-to-list 'flymake-allowed-file-name-masks '
 	     ("\\.java$" my-java-flymake-init flymake-simple-cleanup))
-;;;;;;;;;;;;;;;;;;;;;
 
 (require 'jedi)
 (add-hook 'python-mode-hook 'auto-complete-mode)

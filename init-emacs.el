@@ -25,6 +25,7 @@
 (require 'my-editing)
 (require 'my-projects)
 (require 'my-fun-packages)
+(require 'my-cpplint-fix)
 
 (which-function-mode)
 (color-theme-solarized-dark)

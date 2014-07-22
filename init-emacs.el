@@ -49,7 +49,7 @@
 ;; Pianobar
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
-(add-to-list 'default-frame-alist '(font . "Source Code Pro Medium-10"))
+(add-to-list 'default-frame-alist '(font . "Source Code Pro-9"))
 
 
 (cd "~/")

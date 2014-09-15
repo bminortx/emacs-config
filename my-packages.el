@@ -44,6 +44,7 @@
 		      ruby-tools
 		      sass-mode
 		      scss-mode
+		      sentence-highlight
 		      solarized-theme
 		      twittering-mode
 		      volatile-highlights

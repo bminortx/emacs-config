@@ -27,6 +27,9 @@
 (require 'my-fun-packages)
 (require 'my-cpplint-fix)
 
+(desktop-load-default)
+(desktop-read)
+
 (which-function-mode)
 (color-theme-solarized-dark)
 (powerline-default-theme)
@@ -51,5 +54,5 @@
 (autoload 'pianobar "pianobar" nil t)
 (add-to-list 'default-frame-alist '(font . "Source Code Pro-10"))
 
-
 (cd "~/")
+

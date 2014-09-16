@@ -20,11 +20,14 @@
 (setq-default save-place t)
 
 (require 'desktop)
-
+(setq desktop-dirname             "~/.emacs.d/"
+      desktop-base-file-name      ".emacs.desktop"
+      desktop-base-lock-name      "lock"
+      desktop-path                (list desktop-dirname))
 (desktop-save-mode 1) ;; Switch on desktop.el
 
 (defun desktop-autosave-save ()
-  (desktop-save-in-desktop-dir))
+  (desktop-save desktop-dirname))
 ;;;;;;;;;;;;;;;;
 
 (require 'ido)
@@ -54,9 +57,7 @@
 
 (require 'yasnippet)
 
-(add-hook 'auto-save-hook
-	  (lambda ()
-	    ((desktop-autosave-save))))
+(add-hook 'auto-save-hook 'desktop-autosave-save)
 
 (require 'auto-complete)
 

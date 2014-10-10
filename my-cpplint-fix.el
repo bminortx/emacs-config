@@ -3,7 +3,6 @@
 ;;; the Google Style Guide. Super useful when running cpplint
 (defun cpplint-code-fix ()
   (interactive)
-  (c++-mode)
   (goto-char 1)
   (replace-string "){" ") {")
   (goto-char 1)

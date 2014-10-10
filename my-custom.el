@@ -49,7 +49,7 @@
   ;; (setq c-basic-offset 4)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
-  ;(setq compile-command "ant compile")
+					;(setq compile-command "ant compile")
   (whitespace-mode 1)
   )
 

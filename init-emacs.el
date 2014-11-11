@@ -53,6 +53,8 @@
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
 (add-to-list 'default-frame-alist '(font . "Source Code Pro-9"))
+(add-hook 'after-init-hook 
+	  (lambda () (require 'jenkins-watch)))
 
 (cd "~/")
 

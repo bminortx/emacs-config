@@ -1,35 +1,29 @@
 ;;; We define modes for c++, python, and java
 ;;; Code:
 (load-library "google-c-style")
-(defun jack-c++-mode ()
+(defun brandon-c++-mode ()
   "C++ mode made to fit the way I like it."
   (interactive)
   (c++-mode)
   (subword-mode)
   (google-set-c-style)
-  ;; (setq tab-width 4)
-  ;; (setq c-basic-offset 4)
-  ;(setq compile-command "make install -j2 -k -C ~/jack/nao-man/ ")
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
   (whitespace-mode 1)
   )
 
-(defun jack-c-mode ()
-  "C++ mode made to fit the way I like it."
+(defun brandon-c-mode ()
+  "C mode made to fit the way I like it."
   (interactive)
   (c-mode)
   (subword-mode)
   (google-set-c-style)
-  ;; (setq tab-width 4)
-  ;; (setq c-basic-offset 4)
-  ;(setq compile-command "make install -j2 -k -C ~/jack/nao-man/ ")
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
   (whitespace-mode 1)
   )
 
-(defun jack-python-mode ()
+(defun brandon-python-mode ()
   (interactive)
   (python-mode)
   (subword-mode)
@@ -38,52 +32,41 @@
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
   (whitespace-mode 1)
+  (setq compile-command "python ")
   )
 
-(defun jack-java-mode ()		; For the TOOL
+(defun brandon-java-mode ()
   (interactive)
   (java-mode)
-  (subword-mode)    ; Uncomment to treat camelText words as separate
+  (subword-mode) ; Uncomment to treat camelText words as separate
   (google-set-c-style)
-  ;; (setq tab-width 4)
-  ;; (setq c-basic-offset 4)
   (which-function-mode 1)
-  (setq indent-tabs-mode nil)
-					;(setq compile-command "ant compile")
+  (setq indent-tabs-mode nil)		
   (whitespace-mode 1)
   )
 
 ;;; We set the jack modes as default for the appropraite files
-;;;
 ;;; To make this apply only in jack directories add a path to the settings
-;;; i.e. ("~/src/jack/.*\\.cpp$" . jack-c++-mode)
-(setq auto-mode-alist (append '(("\\.cpp$" . jack-c++-mode)
-				("\\.cc$" . jack-c++-mode)
-				("\\.hpp$" . jack-c++-mode)
-				("\\.h$" . jack-c++-mode)
-				("\\.py$" . jack-python-mode)
-				("\\.java$" . jack-java-mode)
+(setq auto-mode-alist (append '(("\\.cpp$" . brandon-c++-mode)
+				("\\.cc$" . brandon-c++-mode)
+				("\\.hpp$" . brandon-c++-mode)
+				("\\.h$" . brandon-c++-mode)
+				("\\.py$" . brandon-python-mode)
+				("\\.java$" . brandon-java-mode)
 				) auto-mode-alist))
 
-(setq auto-mode-alist (append '(("\\.c$" . jack-c-mode)) auto-mode-alist))
+(setq auto-mode-alist (append '(("\\.c$" . brandon-c-mode)) auto-mode-alist))
 
 ;; CUSTOM STYLES
-
 (c-add-style "my-c-style"
              '("BSD"
 	       (c-offsets-alist .
 				((innamespace . 0))
 				)))
 
-;; (add-hook 'c-mode-common-hook
-;; 	  '(c-set-style "my-c-style"))
-;; (add-hook 'c++-mode-hook
-;; 	  '(c-set-style "my-c-style"))
 (setq-default c-basic-offset 4)
-;;(setq c-default-style "google-c-style")
 
 (setq c-doc-comment-style 'javadoc)
-
 (setq whitespace-style (quote (face tabs trailing space-before-tab tab-mark lines)))
 (setq windmove-wrap-around t)
 

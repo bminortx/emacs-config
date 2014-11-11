@@ -28,6 +28,7 @@
 		      haskell-mode
 		      inf-ruby
 		      jedi
+		      jenkins-watch
 		      magit
 		      matlab-mode
 		      markdown-mode

@@ -4,6 +4,7 @@
 
 (require 'color-theme)
 (require 'color-theme-solarized)
+(require 'color-theme-almost-monokai)
 
 (global-set-key (kbd "<f12>") 'color-theme-solarized-dark)
 

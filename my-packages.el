@@ -23,6 +23,7 @@
 		      flycheck-google-cpplint
 		      gist
 		      groovy-mode
+					guide-key
 		      haml-mode
 		      handlebars-mode
 		      haskell-mode

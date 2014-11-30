@@ -31,6 +31,7 @@
   (setq c-basic-offset 4)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
+  (setq-default tab-width 2)
   (whitespace-mode 1)
   (setq compile-command "python ")
   )

@@ -4,6 +4,7 @@
 
 (require 'color-theme)
 (require 'color-theme-solarized)
+;; (load-file "./my-themes/almost-monokai/color-theme-almost-monokai.el")
 (require 'color-theme-almost-monokai)
 
 (global-set-key (kbd "<f12>") 'color-theme-solarized-dark)

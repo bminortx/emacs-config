@@ -31,7 +31,7 @@
 (desktop-read)
 
 (which-function-mode)
-(color-theme-solarized-dark)
+(color-theme-almost-monokai)
 (powerline-default-theme)
 
 ;; Add Google C++ Style Checker

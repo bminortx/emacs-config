@@ -132,8 +132,4 @@
 
 (provide 'my-editing)
 
-(require 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x" "M-x" "C-c"))
-(setqguide-key/idle-delay 5)
-(guide-key-mode 1)
 ;;; my-editing.el ends here

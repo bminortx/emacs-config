@@ -57,6 +57,18 @@
   (whitespace-mode 1)
   )
 
+(defun brandon-cuda-mode ()
+  (interactive)
+  (cuda-mode)
+	(google-set-c-stlye)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (setq tab-width 2)
+  (setq-default tab-width 2)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
 ;;; We set the jack modes as default for the appropraite files
 ;;; To make this apply only in jack directories add a path to the settings
 (setq auto-mode-alist (append '(("\\.cpp$" . brandon-c++-mode)
@@ -65,6 +77,9 @@
 				("\\.h$" . brandon-c++-mode)
 				("\\.py$" . brandon-python-mode)
 				("\\.java$" . brandon-java-mode)
+				("\\.m$" . brandon-matlab-mode)
+				("\\.cu$" . brandon-cuda-mode)
+				("\\.cuh$" . brandon-cuda-mode)
 				) auto-mode-alist))
 
 (setq auto-mode-alist (append '(("\\.c$" . brandon-c-mode)) auto-mode-alist))

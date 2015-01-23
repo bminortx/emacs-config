@@ -130,6 +130,11 @@
   (exec-path-from-shell-initialize)
   (exec-path-from-shell-copy-env "EDITOR"))
 
+(require 'virtualenvwrapper)
+(venv-initialize-interactive-shells) ;; if you want interactive shell support
+(venv-initialize-eshell) ;; if you want eshell support
+(setq venv-location "/home/replica/RepLabs/Server/venv/")
+
 (provide 'my-editing)
 
 ;;; my-editing.el ends here

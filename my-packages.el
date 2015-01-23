@@ -49,6 +49,7 @@
 		      sentence-highlight
 		      solarized-theme
 		      twittering-mode
+					virtualenvwrapper
 		      volatile-highlights
 		      workgroups
 		      yaml-mode

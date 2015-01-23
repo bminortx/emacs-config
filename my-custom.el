@@ -60,7 +60,7 @@
 (defun brandon-cuda-mode ()
   (interactive)
   (cuda-mode)
-	(google-set-c-stlye)
+  (google-set-c-style)
   (subword-mode) ; Uncomment to treat camelText words as separate
   (setq tab-width 2)
   (setq-default tab-width 2)

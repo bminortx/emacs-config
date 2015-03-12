@@ -133,7 +133,7 @@
 (require 'virtualenvwrapper)
 (venv-initialize-interactive-shells) ;; if you want interactive shell support
 (venv-initialize-eshell) ;; if you want eshell support
-(setq venv-location "/home/replica/RepLabs/Server/venv/")
+(setq venv-location "/home/replica/RepLabs/server/venv/")
 
 (provide 'my-editing)
 

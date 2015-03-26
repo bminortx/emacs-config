@@ -32,7 +32,7 @@
 
 (which-function-mode)
 (color-theme-almost-monokai)
-(powerline-default-theme)
+(Powerline-default-theme)
 
 ;; Add Google C++ Style Checker
 ;; In default, syntax checked by Clang and Cppcheck.

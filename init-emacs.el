@@ -32,7 +32,7 @@
 
 (which-function-mode)
 (color-theme-almost-monokai)
-(Powerline-default-theme)
+(powerline-default-theme)
 
 ;; Add Google C++ Style Checker
 ;; In default, syntax checked by Clang and Cppcheck.
@@ -52,7 +52,7 @@
 ;; Pianobar
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
-(add-to-list 'default-frame-alist '(font . "Source Code Pro-9"))
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
 (add-hook 'after-init-hook 
 	  (lambda () (require 'jenkins-watch)))
 

@@ -31,7 +31,7 @@
 (desktop-read)
 
 (which-function-mode)
-(color-theme-almost-monokai)
+(color-theme-sanityinc-tomorrow-day) 
 (powerline-default-theme)
 
 ;; Add Google C++ Style Checker
@@ -56,5 +56,6 @@
 (add-hook 'after-init-hook 
 	  (lambda () (require 'jenkins-watch)))
 
+(global-set-key (kbd "<f2>") 'eshell)
 (cd "~/")
 

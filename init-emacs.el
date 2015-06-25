@@ -56,6 +56,18 @@
 (add-hook 'after-init-hook 
 	  (lambda () (require 'jenkins-watch)))
 
+(defun move-cursor-next-pane ()
+  "Move cursor to the next pane."
+  (interactive)
+  (other-window 1))
+
+(defun move-cursor-previous-pane ()
+  "Move cursor to the previous pane."
+  (interactive)
+  (other-window -1))
+
 (global-set-key (kbd "<f2>") 'eshell)
+(global-set-key (kbd "C-s-j") 'move-cursor-next-pane)
+(global-set-key (kbd "C-s-;") 'move-cursor-previous-pane)
 (cd "~/")
 

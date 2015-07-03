@@ -6,8 +6,8 @@
 (require 'tramp)
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/")
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
+						 '("melpa" . "http://melpa.milkbox.net/packages/")
+						 '("marmalade" . "http://marmalade-repo.org/packages/"))
 
 ;; basic initialization, (require) non-ELPA packages, etc.
 (setq package-enable-at-startup nil) 
@@ -31,7 +31,6 @@
 (desktop-read)
 
 (which-function-mode)
-(color-theme-sanityinc-tomorrow-day) 
 (powerline-default-theme)
 
 ;; Add Google C++ Style Checker
@@ -40,7 +39,7 @@
   '(progn
      (require 'flycheck-google-cpplint)
      (flycheck-add-next-checker 'c/c++-clang
-				'c/c++-googlelint 'append)
+																'c/c++-googlelint 'append)
      )
   )
 (setq auto-mode-alist (cons '("\.v$" . coq-mode) auto-mode-alist))
@@ -53,8 +52,6 @@
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
-(add-hook 'after-init-hook 
-	  (lambda () (require 'jenkins-watch)))
 
 (defun move-cursor-next-pane ()
   "Move cursor to the next pane."
@@ -67,7 +64,8 @@
   (other-window -1))
 
 (global-set-key (kbd "<f2>") 'eshell)
-(global-set-key (kbd "C-s-j") 'move-cursor-next-pane)
-(global-set-key (kbd "C-s-;") 'move-cursor-previous-pane)
+(color-theme-sanityinc-tomorrow-day)
+(global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
+(global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
 (cd "~/")
 

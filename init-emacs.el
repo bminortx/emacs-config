@@ -27,9 +27,6 @@
 (require 'my-fun-packages)
 (require 'my-cpplint-fix)
 
-(desktop-load-default)
-(desktop-read)
-
 (which-function-mode)
 (powerline-default-theme)
 
@@ -68,4 +65,3 @@
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
 (cd "~/")
-

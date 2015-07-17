@@ -25,6 +25,8 @@
       desktop-base-lock-name      "lock"
       desktop-path                (list desktop-dirname))
 (desktop-save-mode 1) ;; Switch on desktop.el
+(desktop-load-default)
+(desktop-read)
 
 (defun desktop-autosave-save ()
   (desktop-save desktop-dirname))

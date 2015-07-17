@@ -13,6 +13,7 @@
 		      coffee-mode
 		      color-theme
 		      color-theme-solarized
+		      color-theme-sanityinc-tomorrow
 		      column-marker
 		      dash
 		      deft

@@ -54,8 +54,14 @@
   (other-window -1))
 
 (global-set-key (kbd "<f2>") 'eshell)
+(require 'unit-test)
+(define-key global-map [f6] 'run-unit-tests)
+(setq unit-test-command (lambda ()
+                          (zerop
+                           (shell-command "~/src/slam.git/main/OnTarget/libs/libmisb/tests/test_misb"))))
 (define-key global-map [f7] 'recompile)
 (define-key global-map [f8] 'next-error)
+(define-key global-map [f9] 'set-unit-test-command)
 
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
@@ -107,15 +113,6 @@
 
 (global-set-key [?\C-,] (lambda () (interactive) (scroll-up 1)))
 (global-set-key [?\C-.] (lambda () (interactive) (scroll-down 1)))
-
-(require 'unit-test)
-
-(define-key global-map [f6] 'run-unit-tests)
-(define-key global-map [f9] 'set-unit-test-command)
-(setq unit-test-command (lambda ()
-                          (zerop
-                           (shell-command "~/src/slam.git/main/OnTarget/libs/libmisb/tests/test_misb"))))
-;; (define-key global-map (kbd "C-c o") 'open-unit-test-file)
 
 (require 'multi-term)
 (add-hook 'term-mode-hook

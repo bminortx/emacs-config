@@ -29,6 +29,7 @@
 
 (which-function-mode)
 (powerline-default-theme)
+(color-theme-sanityinc-tomorrow-day)
 
 ;; Add Google C++ Style Checker
 ;; In default, syntax checked by Clang and Cppcheck.

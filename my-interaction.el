@@ -1,17 +1,15 @@
 ;; Typing "yes" or "no" takes too long---use "y" or "n"
 (fset 'yes-or-no-p 'y-or-n-p)
-
 (global-set-key "\C-x\C-m" 'compile)
 (global-set-key (kbd "<f7>") 'recompile)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
-
 (global-set-key (kbd "<f5>") 'linum-mode)
 
 ;; make option key meta
 (setq mac-command-modifier 'meta)
 
 ;;;;;;;;;;;;;;;;
-;;desktop-autosave.el begins here
+;; Desktop Saving and Loading functionality
 (provide 'desktop-autosave)
 (eval-when-compile
   (require 'cl))
@@ -41,27 +39,24 @@
 (global-set-key "\C-xs" 'windmove-down)
 (global-set-key "\C-xw" 'windmove-up)
 (global-set-key "\C-xd" 'windmove-right)
-
 (global-set-key (kbd "M-<left>") 'windmove-left)
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
 
-(define-key global-map [f7] 'recompile)
-(define-key global-map [f8] 'next-error)
-
 (defun move-cursor-next-pane ()
   "Move cursor to the next pane."
   (interactive)
   (other-window 1))
-
 (defun move-cursor-previous-pane ()
   "Move cursor to the previous pane."
   (interactive)
   (other-window -1))
 
 (global-set-key (kbd "<f2>") 'eshell)
-(color-theme-sanityinc-tomorrow-day)
+(define-key global-map [f7] 'recompile)
+(define-key global-map [f8] 'next-error)
+
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
 

@@ -30,7 +30,9 @@
 
 (defun desktop-autosave-save ()
   (desktop-save desktop-dirname))
+
 ;;;;;;;;;;;;;;;;
+;;; Window movement
 
 (require 'ido)
 (ido-mode 'both)
@@ -47,6 +49,23 @@
 
 (define-key global-map [f7] 'recompile)
 (define-key global-map [f8] 'next-error)
+
+(defun move-cursor-next-pane ()
+  "Move cursor to the next pane."
+  (interactive)
+  (other-window 1))
+
+(defun move-cursor-previous-pane ()
+  "Move cursor to the previous pane."
+  (interactive)
+  (other-window -1))
+
+(global-set-key (kbd "<f2>") 'eshell)
+(color-theme-sanityinc-tomorrow-day)
+(global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
+(global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
+
+;;;;;;;;;;;;;;;;
 
 (column-number-mode 1)
 
@@ -89,27 +108,7 @@
 
 (put 'downcase-region 'disabled nil)
 
-;; (global-auto-revert-mode) ;; This really screws up git rebasing...
-
-;; (global-set-key "\C-c\C-v" 'pyflakes)
-
-;; (global-set-key "\C-xn" 'flymake-goto-next-error)
-
 (global-set-key "\M-o" 'project-find-file-ido)
-
-;; (when (load "flymake" t)
-;;   (defun flymake-pyflakes-init ()
-;;     (let* ((temp-file (flymake-init-create-temp-buffer-copy
-;; 		       'flymake-create-temp-inplace))
-;; 	   (local-file (file-relative-name
-;; 			temp-file
-;; 			(file-name-directory buffer-file-name))))
-;;       (list "pyflakes" (list local-file))))
-;;   (add-to-list 'flymake-allowed-file-name-masks
-;; 	       '("\\.py$" flymake-pyflakes-init)))
-
-;; (load-library "flymake-cursor")
-;; (add-hook 'python-mode-hook 'flymake-find-file-hook)
 
 (global-set-key [?\C-,] (lambda () (interactive) (scroll-up 1)))
 (global-set-key [?\C-.] (lambda () (interactive) (scroll-down 1)))

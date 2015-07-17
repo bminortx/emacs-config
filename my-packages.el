@@ -24,7 +24,7 @@
 		      flycheck-google-cpplint
 		      gist
 		      groovy-mode
-					guide-key
+		      guide-key
 		      haml-mode
 		      handlebars-mode
 		      haskell-mode
@@ -50,7 +50,7 @@
 		      sentence-highlight
 		      solarized-theme
 		      twittering-mode
-					virtualenvwrapper
+		      virtualenvwrapper
 		      volatile-highlights
 		      workgroups
 		      yaml-mode

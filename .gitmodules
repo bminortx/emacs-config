@@ -1,3 +1,6 @@
+[submodule "my-themes/almost-monokai"]
+	path = my-themes/almost-monokai
+	url = https://github.com/lut4rp/almost-monokai.git
 [submodule "plugins/mk-project"]
 	path = plugins/mk-project
 	url = https://github.com/chachi/mk-project.git

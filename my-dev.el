@@ -23,6 +23,31 @@
 (setq compilation-always-kill t)
 (setq compilation-skip-threshold 0)
 
+(require 'notifications)
+(defun notify-compilation-result(buffer msg)
+  "Notify that the compilation is finished,
+close the *compilation* buffer if the compilation is successful,
+and set the focus back to Emacs frame"
+  (if (string-match "^finished" msg)
+      (progn
+	(delete-windows-on buffer)
+	;; Notify on compilation success
+	(notifications-notify
+	 :title "Compilation Success"
+	 :timeout 2000
+	 :urgency 'low))
+    (notifications-notify
+     ;; Notify on compilation failure
+     :title "Compilation Failure"
+     :timeout 2000
+     :urgency 'low))
+  (setq current-frame (car (car (cdr (current-frame-configuration)))))
+  (select-frame-set-input-focus current-frame)
+  )
+
+(add-to-list 'compilation-finish-functions
+	     'notify-compilation-result)
+
 ;;;;;;;;;;;;;;;;
 ;;; GDB
 ;; Avoid typing full path when starting gdb

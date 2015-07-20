@@ -36,6 +36,7 @@
 		      markdown-mode
 		      multi-term
 		      mustache-mode
+		      notifications
 		      paredit
 		      popup
 		      powerline

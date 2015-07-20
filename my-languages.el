@@ -1,51 +1,33 @@
 ;(require 'csharp-mode)
 
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))
-
 (add-hook 'org-mode-hook '(lambda () (visual-line-mode t) ) )
-
 (add-hook 'LaTeX-mode-hook '(lambda ()
 			      (visual-line-mode 1)
 			      (sentence-highlight-mode)))
-;; (add-hook 'LaTeX-mode-hook '(lambda () (flyspell-mode 1) ) )
 
 (require 'cmake-mode)
 (setq auto-mode-alist
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-		("Rakefile" . ruby-mode)
-		("\\.cmake\\'" . cmake-mode))
-	      auto-mode-alist))
-
-;;(require 'ess-site)
-
-;; (require 'auctex)
-
-;(setenv "PATH" (concat (getenv "PATH") ":/Applications/Racket\ v5.3/bin"))
-;(normal-top-level-add-to-load-path '("/Applications/Racket\ v5.3"))
-;(load-file "~/.emacs.d/emacs-config/plugins/geiser/elisp/geiser.el")
-;(require 'quack)
-
+								("Rakefile" . ruby-mode)
+								("\\.cmake\\'" . cmake-mode))
+							auto-mode-alist))
 
 ;;; C++ mode hacks for broken font locking
-
 (require 'font-lock)
-
 (defun --copy-face (new-face face)
   "Define NEW-FACE from existing FACE."
   (copy-face face new-face)
   (eval `(defvar ,new-face nil))
   (set new-face new-face))
-
 (--copy-face 'font-lock-label-face  ; labels, case, public, private, proteced, namespace-tags
              'font-lock-keyword-face)
 (--copy-face 'font-lock-doc-markup-face ; comment markups such as Javadoc-tags
              'font-lock-doc-face)
 (--copy-face 'font-lock-doc-string-face ; comment markups
              'font-lock-comment-face)
-
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
-
 
 (add-hook 'c++-mode-hook
           '(lambda()
@@ -70,16 +52,7 @@
                     ))
              ) t)
 
-;;;;;;;;;;;;;;;;;;;;;
-;; BAM : Put in a java syntax highlighter
 (require 'flymake)
-;; (add-hook 'java-mode-hook ((flymake-mode-on)))
-;; (defun my-java-flymake-init ()
-;;   (list "javac" (list (flymake-init-create-temp-buffer-copy
-;;                        'flymake-create-temp-with-folder-structure))))
-;; (add-to-list 'flymake-allowed-file-name-masks '
-;; 	     ("\\.java$" my-java-flymake-init flymake-simple-cleanup))
-
 (require 'jedi)
 (add-hook 'python-mode-hook 'auto-complete-mode)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
@@ -104,6 +77,21 @@
 (global-set-key (kbd "C-c C-g")
 		'(lambda ()(interactive) (gud-gdb (concat "gdb --fullname "
 							  (cppcm-get-exe-path-current-buffer)))))
+
+;;; Switching between .h and .cc modes
+(defun switch-between-h-and-cc ()
+  "Switch between a header (.h) and an C++ implementation (.cc/.cpp) file using mk-project support"
+  (interactive)
+  (let* ((file (file-name-base))
+				 (ext (file-name-extension (buffer-file-name)))
+				 (header-regex "[h|hpp]")
+				 (impl-regex "[cc|cpp|cxx|c]")
+				 (newfile (concat file (if (string-match "h" ext)
+																	 (concat "\." impl-regex)
+																 (concat "\." header-regex)))))
+    (project-find-file newfile)))
+
+(global-set-key (kbd "M-s") 'switch-between-h-and-cc)
 
 (setq cppcm-write-flymake-makefile nil)
 

@@ -18,7 +18,7 @@
 (require 'my-moving)
 (require 'my-env)
 (require 'my-windows)
-(require 'my-bindings)
+(require 'my-global-bindings)
 (require 'my-custom)
 (require 'my-languages)
 (require 'my-vcs)
@@ -27,28 +27,30 @@
 (require 'my-fun-packages)
 (require 'my-cpplint-fix)
 
+;;;;;;;;;;;;;;;;
+;; Desktop Saving and Loading functionality
+(provide 'desktop-autosave)
+(eval-when-compile
+  (require 'cl))
+(require 'saveplace)
+(setq-default save-place t)
+(require 'desktop)
+(setq desktop-dirname             "~/.emacs.d/"
+      desktop-base-file-name      ".emacs.desktop"
+      desktop-base-lock-name      "lock"
+      desktop-path                (list desktop-dirname))
+(desktop-save-mode 1) ;; Switch on desktop.el
+(desktop-load-default)
+(desktop-read)
+
+(defun desktop-autosave-save ()
+  (desktop-save desktop-dirname))
+
+;;;;;;;;;;;;;;;;
 (which-function-mode)
 (powerline-default-theme)
 (add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
 
-;; Add Google C++ Style Checker
-;; In default, syntax checked by Clang and Cppcheck.
-(eval-after-load 'flycheck
-  '(progn
-     (require 'flycheck-google-cpplint)
-     (flycheck-add-next-checker 'c/c++-clang
-				'c/c++-googlelint 'append)
-     )
-  )
-(setq auto-mode-alist (cons '("\.v$" . coq-mode) auto-mode-alist))
-(setq auto-mode-alist (cons '("\.v$" . coq-mode) auto-mode-alist))
-
-;; Coq editing mode
-;;(autoload 'coq-mode "coq" "Major mode for editing Coq vernacular." t)
-;;(load-file "~/.emacs.d/ProofGeneral-4.2/ProofGeneral-4.2/generic/proof-site.el")
-;; Pianobar
-(add-to-list 'load-path "/home/agrif/emacsinclude")
-(autoload 'pianobar "pianobar" nil t)
-
-
 (cd "~/")
+(provide 'init-emacs)
+;;; init-emacs ends here

@@ -11,30 +11,6 @@
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
 ;;;;;;;;;;;;;;;;
-;;; Window and Frame movement
-(global-set-key "\C-xa" 'windmove-left)
-(global-set-key "\C-xs" 'windmove-down)
-(global-set-key "\C-xw" 'windmove-up)
-(global-set-key "\C-xd" 'windmove-right)
-(global-set-key (kbd "M-<left>") 'windmove-left)
-(global-set-key (kbd "M-<down>") 'windmove-down)
-(global-set-key (kbd "M-<up>") 'windmove-up)
-(global-set-key (kbd "M-<right>") 'windmove-right)
-(defun move-cursor-next-pane ()
-  "Move cursor to the next pane."
-  (interactive)
-  (other-window 1))
-(defun move-cursor-previous-pane ()
-  "Move cursor to the previous pane."
-  (interactive)
-  (other-window -1))
-;;; Just like in Chrome! Woo
-(global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
-(global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
-(global-set-key [?\C-,] (lambda () (interactive) (scroll-up 1)))
-(global-set-key [?\C-.] (lambda () (interactive) (scroll-down 1)))
-
-;;;;;;;;;;;;;;;;
 ;;; Function Keys
 (require 'unit-test)
 (define-key global-map [f2] 'eshell)  ;; Use multi-term, alternatively

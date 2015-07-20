@@ -1,3 +1,8 @@
+;;; package --- Summary
+;;; Commentary:
+;;; All of the bindings for global modes (usually)
+
+;;; Code:
 ;; Typing "yes" or "no" takes too long---use "y" or "n"
 (fset 'yes-or-no-p 'y-or-n-p)
 (global-set-key "\C-x\C-m" 'compile)
@@ -96,6 +101,7 @@
 (setq show-paren-delay 0)
 (show-paren-mode t)
 
+(global-set-key "\C-xr" 'rgrep)
 (setq search-highlight t)	       ; incremental search highlights
 (setq query-replace-highlight t)       ; highlight during query
 
@@ -154,5 +160,5 @@
 (global-set-key (kbd "<f2>") 'multi-term)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(provide 'my-interaction)
-;;; my-interaction.el ends here
+(provide 'my-bindings)
+;;; my-bindings.el ends here

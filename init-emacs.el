@@ -18,7 +18,7 @@
 (require 'my-moving)
 (require 'my-env)
 (require 'my-windows)
-(require 'my-interaction)
+(require 'my-bindings)
 (require 'my-custom)
 (require 'my-languages)
 (require 'my-vcs)

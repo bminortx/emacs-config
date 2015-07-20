@@ -1,10 +1,10 @@
+;;; package --- Summary
+;;; Commentary: 
 ;;----Moving around---
+
+;;; Code:
 ;; Scroll one line at a time
 (setq scroll-step 1)
-
-
-;; Set C-c, g to goto-line
-(global-set-key "\C-cg" 'goto-line)
 
 ;; Set up home/end keys
 (global-set-key [end] 'end-of-buffer)
@@ -20,7 +20,5 @@
 
 ;; Don't insert new lines when scrolling
 (setq next-line-add-newlines nil)
-
-(global-set-key "\C-xr" 'rgrep)
 
 (provide 'my-moving)

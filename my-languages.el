@@ -87,6 +87,13 @@
 				 (concat "\." header-regex)))))
     (project-find-file newfile)))
 (global-set-key (kbd "M-s") 'switch-between-h-and-cc)
+(add-hook 'c-mode-common-hook
+	  (lambda()
+	    (add-hook 'write-contents-functions
+		      (lambda()
+			(save-excursion
+			  (delete-trailing-whitespace))
+			(indent-for-tab-command)))))
 
 ;;;;;;;;;;;;;;
 ;;; Python
@@ -174,6 +181,15 @@
   (setq indent-tabs-mode nil)		
   (whitespace-mode 1)
   )
+
+;;;;;;;;;;;;;;
+;;; Lisp
+(require 'paredit)
+(setq my-lisp-par-hook #'(lambda ()
+			   (paredit-mode 1)
+			   (autopair-mode -1)))
+(add-hook 'lisp-mode-hook my-lisp-par-hook)
+(add-hook 'emacs-lisp-mode-hook my-lisp-par-hook)
 
 ;;;;;;;;;;;;;;
 ;;; Apply all modes

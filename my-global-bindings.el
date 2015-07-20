@@ -42,40 +42,6 @@
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
 
-;;;;;;;;;;;
-;;; Searching Files - grep, search
-(global-set-key "\C-xr" 'rgrep)
-(setq search-highlight t)	       ; incremental search highlights
-(setq query-replace-highlight t)       ; highlight during query
-
-;;; Searching Buffers - ido, ibuffer, dired
-(require 'ido)
-(ido-mode 'both)
-(global-set-key "\M-o" 'project-find-file-ido)
-(setq
-  ido-save-directory-list-file "~/.emacs.d/cache/ido.last"
-  ido-ignore-buffers ;; ignore these guys
-  '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido" "^\*trace"
-    "^\*GTAGS" "^session\.*" "^\*" "^\*magit-process\*")
-  ido-work-directory-list '("~/" "~/Desktop" "~/Documents" "~/src")
-  ido-case-fold  t                 ; be case-insensitive
-  ido-enable-last-directory-history t ; remember last used dirs
-  ido-max-work-directory-list 30   ; should be enough
-  ido-max-work-file-list      50   ; remember many
-  ido-use-filename-at-point nil    ; don't use filename at point (annoying)
-  ido-use-url-at-point nil         ; don't use url at point (annoying)
-  ido-max-prospects 8              ; don't spam my minibuffer
-  ido-confirm-unique-completion t) ; wait for RET, even with unique completion
-(global-set-key (kbd "C-x C-b") 'ibuffer)
-(global-set-key "\C-x\C-d" 'dired)
-(put 'dired-find-alternate-file 'disabled nil)
-
-(defun insert-doc-comment ()
-  (interactive)
-  (insert "/**  */")
-  (dotimes (number 3) (backward-char)))
-(global-set-key (kbd "M-:") 'insert-doc-comment)
-
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (global-set-key "\C-x\C-r" 'revert-buffer)

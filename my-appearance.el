@@ -43,6 +43,8 @@
 (show-paren-mode t)
 (setq blink-cursor-mode nil)
 (column-number-mode 1)
+(require 'column-marker)
+(add-hook 'c++-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Modeline Appearance
 (set-face-background 'mode-line "DarkOliveGreen2")

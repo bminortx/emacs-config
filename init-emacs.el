@@ -42,9 +42,9 @@
 (desktop-save-mode 1) ;; Switch on desktop.el
 (desktop-load-default)
 (desktop-read)
-
 (defun desktop-autosave-save ()
   (desktop-save desktop-dirname))
+(add-hook 'auto-save-hook 'desktop-autosave-save)
 
 ;;;;;;;;;;;;;;;;
 (which-function-mode)

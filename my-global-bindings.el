@@ -5,13 +5,10 @@
 ;;; Code:
 ;; Typing "yes" or "no" takes too long---use "y" or "n"
 (fset 'yes-or-no-p 'y-or-n-p)
-(global-set-key "\C-x\C-m" 'compile)
-(global-set-key (kbd "<f7>") 'recompile)
-(global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-set-key (kbd "<f5>") 'linum-mode)
 
-;; make option key meta
+;; make option key meta | C-x-C-m = M-x
 (setq mac-command-modifier 'meta)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
 
 ;;;;;;;;;;;;;;;;
 ;;; Window movement
@@ -36,34 +33,27 @@
   "Move cursor to the previous pane."
   (interactive)
   (other-window -1))
-
-(global-set-key (kbd "<f2>") 'eshell)
-(require 'unit-test)
-(define-key global-map [f6] 'run-unit-tests)
-(setq unit-test-command (lambda ()
-                          (zerop
-                           (shell-command "~/src/slam.git/main/OnTarget/libs/libmisb/tests/test_misb"))))
-(define-key global-map [f7] 'recompile)
-(define-key global-map [f8] 'next-error)
-(define-key global-map [f9] 'set-unit-test-command)
-
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
+
+;;;;;;;;;;;;;;;;
+;;; Function Keys
+(require 'unit-test)
+(define-key global-map [f2] 'eshell)
+(define-key global-map [f5] 'linum-mode)
+(define-key global-map [f6] 'compile)
+(global-set-key "\C-x\C-m" 'compile)
+(define-key global-map [f7] 'recompile)
+(define-key global-map [f8] 'next-error)
+(define-key global-map [f9] 'run-unit-tests)
 
 ;;;;;;;;;;;;;;;;
 
 (column-number-mode 1)
 
-(require 'todochiku)
-(if (string= system-type "darwin")
-    '(todochiku-command "/usr/local/bin/growlnotify")
-    )
-
 (setq ring-bell-function 'ignore)
 
 (require 'yasnippet)
-
-(add-hook 'auto-save-hook 'desktop-autosave-save)
 
 (require 'auto-complete)
 

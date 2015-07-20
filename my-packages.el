@@ -37,7 +37,6 @@
 		      multi-term
 		      mustache-mode
 		      paredit
-		      pianobar
 		      popup
 		      powerline
 		      projectile

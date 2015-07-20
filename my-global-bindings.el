@@ -14,27 +14,6 @@
 (setq mac-command-modifier 'meta)
 
 ;;;;;;;;;;;;;;;;
-;; Desktop Saving and Loading functionality
-(provide 'desktop-autosave)
-(eval-when-compile
-  (require 'cl))
-
-(require 'saveplace)
-(setq-default save-place t)
-
-(require 'desktop)
-(setq desktop-dirname             "~/.emacs.d/"
-      desktop-base-file-name      ".emacs.desktop"
-      desktop-base-lock-name      "lock"
-      desktop-path                (list desktop-dirname))
-(desktop-save-mode 1) ;; Switch on desktop.el
-(desktop-load-default)
-(desktop-read)
-
-(defun desktop-autosave-save ()
-  (desktop-save desktop-dirname))
-
-;;;;;;;;;;;;;;;;
 ;;; Window movement
 
 (require 'ido)
@@ -160,5 +139,5 @@
 (global-set-key (kbd "<f2>") 'multi-term)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(provide 'my-bindings)
-;;; my-bindings.el ends here
+(provide 'my-global-bindings)
+;;; my-global-bindings.el ends here

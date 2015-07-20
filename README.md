@@ -12,7 +12,7 @@ My preferred IDE, as customized by me. Despite the fact that it's incredibly unc
 
 - Download all dependencies by running the handy script:
 
-``` ~/emacs.d/emacs-config/update-submodules.sh```
+`~/emacs.d/emacs-config/update-submodules.sh`
 
 - Open Emacs. It'll download all the packages it needs
 - You should be ready to go!

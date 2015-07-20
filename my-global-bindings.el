@@ -10,6 +10,15 @@
 (setq mac-command-modifier 'meta)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+                         (if (equal 'fullboth current-value)
+                             (if (boundp 'old-fullscreen) old-fullscreen nil)
+                           (progn (setq old-fullscreen current-value)
+                                  'fullboth)))))
+
 ;;;;;;;;;;;;;;;;
 ;;; Function Keys
 (require 'unit-test)
@@ -22,6 +31,7 @@
 (setq compilation-skip-threshold 2)
 (define-key global-map [f8] 'next-error)
 (define-key global-map [f9] 'run-unit-tests)
+(define-key global-map [f11] 'toggle-fullscreen)
 
 ;;;;;;;;;;;;;;;;
 ;;; Compilation Tests

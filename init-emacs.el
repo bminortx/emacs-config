@@ -21,7 +21,6 @@
 (require 'my-appearance)
 (require 'my-moving)
 (require 'my-env)
-(require 'my-windows)
 (require 'my-global-bindings)
 (require 'my-custom)
 (require 'my-languages)

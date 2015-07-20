@@ -10,6 +10,33 @@
 (require 'color-theme-almost-monokai)
 (require 'color-theme-sanityinc-tomorrow)
 
+;;; Switch our color with a keybinding
+(require 'color-theme)
+(setq my-color-themes (list 'color-theme-sanityinc-tomorrow-day
+			    'color-theme-sanityinc-tomorrow-night
+			    'color-theme-almost-monokai
+			    'color-theme-solarized-light
+			    'color-theme-solarized-dark))
+(defun my-theme-set-default () ; Set the first row
+  (interactive)
+  (setq theme-current my-color-themes)
+  (funcall (car theme-current)))
+(defun my-describe-theme () ; Show the current theme
+  (interactive)
+  (message "%s" (car theme-current)))
+(defun my-theme-cycle ()
+  (interactive)
+  (setq theme-current (cdr theme-current))
+  (if (null theme-current)
+      (setq theme-current my-color-themes))
+  (funcall (car theme-current))
+  (message "%S" (car theme-current)))
+
+(setq theme-current my-color-themes)
+(setq color-theme-is-global nil) ; Initialization
+(my-theme-set-default)
+(define-key global-map [f12] 'my-theme-cycle)
+
 ;; Turn on pretty font colors
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration 3)
@@ -54,9 +81,6 @@
 (set-face-foreground font-lock-comment-face "OrangeRed3")
 (set-face-foreground font-lock-comment-delimiter-face "OrangeRed4")
 (set-face-foreground font-lock-doc-face "OrangeRed3")
-
-;;; Color Theme of Buffer at Init
-(load-theme 'sanityinc-tomorrow-day t)
 
 (provide 'my-appearance)
 ;;; my-appearance.el ends here

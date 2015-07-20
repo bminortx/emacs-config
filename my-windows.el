@@ -5,14 +5,6 @@
 ;; Remove graphical toolbar (if version 21 or higher)
 (tool-bar-mode 0)
 
-;; If Emacs "hangs" for a few seconds while starting, you might have
-;; to comment out or change the following line that tries to set the
-;; font to a fixed width font:
-;;(set-default-font "fixed")
-;;(set-default-font "9x15")  ;; high resolution monitor, bigger fonts
-;;(set-default-font "-xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso8859-1")
-
-
 ;; don't show tooltips
 (tooltip-mode 0)
 

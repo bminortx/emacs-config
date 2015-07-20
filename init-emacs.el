@@ -14,7 +14,7 @@
 (package-initialize)
 
 (require 'my-packages)
-(require 'my-colors)
+(require 'my-appearance)
 (require 'my-moving)
 (require 'my-env)
 (require 'my-windows)
@@ -29,7 +29,7 @@
 
 (which-function-mode)
 (powerline-default-theme)
-(load-theme 'sanityinc-tomorrow-day t)
+(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
 
 ;; Add Google C++ Style Checker
 ;; In default, syntax checked by Clang and Cppcheck.
@@ -49,6 +49,6 @@
 ;; Pianobar
 (add-to-list 'load-path "/home/agrif/emacsinclude")
 (autoload 'pianobar "pianobar" nil t)
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
+
 
 (cd "~/")

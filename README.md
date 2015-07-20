@@ -21,8 +21,9 @@ My preferred IDE, as customized by me. Despite the fact that it's incredibly unc
 
 The configuration files of this repo are fairly descriptive (my-dev, my-appearance, etc) so look through them if you're curious about what does what for any part of the system. Of particular use to me are:
 
-- Magit - Git interface
-- Dired - File management
-- Compilation - Compile and test programs and packages
+- [Magit](https://github.com/magit/magit) [C-x C-i] - Beautiful Git interface.
+- [Dired](http://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html) [C-x C-d] - File management
+- [Compilation](http://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation.html) [f6] - Compile and test programs and packages
+- [Eshell](http://www.gnu.org/software/emacs/manual/html_mono/eshell.html) [f2] - Shell in Emacs! 
 
 Note: If you're new to Emacs, always remember that you can see all of the keybindings available for your current mode with the keybinding `C-h m`. Such a nice feature.

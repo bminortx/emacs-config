@@ -22,12 +22,19 @@
   (toggle-read-only))
 (add-hook 'compilation-filter-hook 'colorize-compilation-buffer)
 
+;;; Cursor Appearance 
+(setq blink-matching-paren t)
+(setq show-paren-delay 0)
+(show-paren-mode t)
+(setq blink-cursor-mode nil)
+(column-number-mode 1)
+
 ;;; Comments
 (set-face-foreground font-lock-comment-face "OrangeRed3")
 (set-face-foreground font-lock-comment-delimiter-face "OrangeRed4")
 (set-face-foreground font-lock-doc-face "OrangeRed3")
 
-;;; Current Color
+;;; Color of Buffer at Init
 (load-theme 'sanityinc-tomorrow-day t)
 
 (provide 'my-appearance)

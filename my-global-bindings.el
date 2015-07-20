@@ -11,11 +11,7 @@
 (global-set-key "\C-c\C-m" 'execute-extended-command)
 
 ;;;;;;;;;;;;;;;;
-;;; Window movement
-
-(require 'ido)
-(ido-mode 'both)
-
+;;; Window and Frame movement
 (global-set-key "\C-xa" 'windmove-left)
 (global-set-key "\C-xs" 'windmove-down)
 (global-set-key "\C-xw" 'windmove-up)
@@ -24,7 +20,6 @@
 (global-set-key (kbd "M-<down>") 'windmove-down)
 (global-set-key (kbd "M-<up>") 'windmove-up)
 (global-set-key (kbd "M-<right>") 'windmove-right)
-
 (defun move-cursor-next-pane ()
   "Move cursor to the next pane."
   (interactive)
@@ -33,62 +28,44 @@
   "Move cursor to the previous pane."
   (interactive)
   (other-window -1))
+;;; Just like in Chrome! Woo
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
+(global-set-key [?\C-,] (lambda () (interactive) (scroll-up 1)))
+(global-set-key [?\C-.] (lambda () (interactive) (scroll-down 1)))
 
 ;;;;;;;;;;;;;;;;
 ;;; Function Keys
 (require 'unit-test)
-(define-key global-map [f2] 'eshell)
+(define-key global-map [f2] 'eshell)  ;; Use multi-term, alternatively
 (define-key global-map [f5] 'linum-mode)
 (define-key global-map [f6] 'compile)
 (global-set-key "\C-x\C-m" 'compile)
 (define-key global-map [f7] 'recompile)
+(setq compilation-always-kill t)
+(setq compilation-skip-threshold 2)
 (define-key global-map [f8] 'next-error)
 (define-key global-map [f9] 'run-unit-tests)
 
 ;;;;;;;;;;;;;;;;
-
-(column-number-mode 1)
-
+;;; Compilation Tests
 (setq ring-bell-function 'ignore)
 
+
+;;;;;;;;;;;;;;;;
+;;; Auto-complete
+;;; Note: Not set up, but would be useful
 (require 'yasnippet)
-
 (require 'auto-complete)
-
 (add-to-list 'ac-dictionary-directories
              "~/.emacs.d/emacs-config/plugins/auto-complete/dict/")
 (require 'auto-complete-config)
 (ac-config-default)
-
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
 
-;; show paren matches
-(setq blink-matching-paren t)
-(setq show-paren-delay 0)
-(show-paren-mode t)
-
-(global-set-key "\C-xr" 'rgrep)
-(setq search-highlight t)	       ; incremental search highlights
-(setq query-replace-highlight t)       ; highlight during query
-
-(global-set-key "\C-x\C-r" 'revert-buffer)
-
-(setq blink-cursor-mode nil)
-
-(put 'upcase-region 'disabled nil)
-
-(put 'dired-find-alternate-file 'disabled nil)
-
-(put 'downcase-region 'disabled nil)
-
-(global-set-key "\M-o" 'project-find-file-ido)
-
-(global-set-key [?\C-,] (lambda () (interactive) (scroll-up 1)))
-(global-set-key [?\C-.] (lambda () (interactive) (scroll-down 1)))
-
+;;;;;;;;;;;;;;;;
+;;; Terminal Settings
 (require 'multi-term)
 (add-hook 'term-mode-hook
   (lambda()
@@ -102,6 +79,16 @@
 (unwind-protect
     (global-set-key (kbd "<XF86Launch5>") 'multi-term))
 
+;;;;;;;;;;;
+;;; Searching Files - grep, search
+(global-set-key "\C-xr" 'rgrep)
+(setq search-highlight t)	       ; incremental search highlights
+(setq query-replace-highlight t)       ; highlight during query
+
+;;; Searching Buffers - ido, ibuffer, dired
+(require 'ido)
+(ido-mode 'both)
+(global-set-key "\M-o" 'project-find-file-ido)
 (setq
   ido-save-directory-list-file "~/.emacs.d/cache/ido.last"
   ido-ignore-buffers ;; ignore these guys
@@ -116,18 +103,19 @@
   ido-use-url-at-point nil         ; don't use url at point (annoying)
   ido-max-prospects 8              ; don't spam my minibuffer
   ido-confirm-unique-completion t) ; wait for RET, even with unique completion
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key "\C-x\C-d" 'dired)
+(put 'dired-find-alternate-file 'disabled nil)
+
 (defun insert-doc-comment ()
   (interactive)
   (insert "/**  */")
   (dotimes (number 3) (backward-char)))
-
 (global-set-key (kbd "M-:") 'insert-doc-comment)
-(global-set-key "\C-x\C-d" 'dired)
 
-(setq compilation-always-kill t)
-(setq compilation-skip-threshold 2)
-(global-set-key (kbd "<f2>") 'multi-term)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(global-set-key "\C-x\C-r" 'revert-buffer)
 
 (provide 'my-global-bindings)
 ;;; my-global-bindings.el ends here

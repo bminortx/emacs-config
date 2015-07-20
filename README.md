@@ -26,4 +26,4 @@ The configuration files of this repo are fairly descriptive (my-dev, my-appearan
 - [Compilation](http://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation.html) [f6] - Compile and test programs and packages
 - [Eshell](http://www.gnu.org/software/emacs/manual/html_mono/eshell.html) [f2] - Shell in Emacs! 
 
-Note: If you're new to Emacs, always remember that you can see all of the keybindings available for your current mode with the keybinding `C-h m`. Such a nice feature.
+If you're new to Emacs, always remember that you can see all of the keybindings available for your current mode with the keybinding `C-h m`. Such a nice feature.

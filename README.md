@@ -19,7 +19,7 @@ My preferred IDE, as customized by me. Despite the fact that it's incredibly unc
 
 ### Customization and Help ###
 
-The configuration files of this repo are fairly descriptive (my-dev, my-appearance, etc) so look through them if you're curious about what does what for any part of the system. Of particular use to me are:
+The configuration files of this repo are fairly descriptive (my-dev, my-appearance, etc) so look through them if you're curious about what does what for any part of the system. Packages of particular use to me are:
 
 - [Magit](https://github.com/magit/magit) [C-x C-i] - Beautiful Git interface.
 - [Dired](http://www.gnu.org/software/emacs/manual/html_node/emacs/Dired.html) [C-x C-d] - File management

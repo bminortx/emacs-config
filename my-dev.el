@@ -17,7 +17,7 @@
 (setq ring-bell-function 'ignore)
 
 ;;;;;;;;;;;;;;;;
-;;; Compile
+;;; Compilation
 ;;; See also my-global-bindings:function keys
 (global-set-key "\C-x\C-m" 'compile)
 (setq compilation-always-kill t)

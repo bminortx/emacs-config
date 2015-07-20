@@ -36,7 +36,10 @@
 ;;;;;;;;;;;;;;;;
 ;;; Compilation Tests
 (setq ring-bell-function 'ignore)
-
+;; Avoid typing full path when starting gdb
+(global-set-key (kbd "C-c C-g")
+		'(lambda ()(interactive) (gud-gdb (concat "gdb --fullname "
+							  (cppcm-get-exe-path-current-buffer)))))
 
 ;;;;;;;;;;;;;;;;
 ;;; Auto-complete

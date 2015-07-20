@@ -22,7 +22,6 @@
 (require 'my-moving)
 (require 'my-env)
 (require 'my-global-bindings)
-(require 'my-custom)
 (require 'my-languages)
 (require 'my-vcs)
 (require 'my-editing)

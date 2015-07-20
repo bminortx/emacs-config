@@ -1,18 +1,22 @@
-;(require 'csharp-mode)
+;;; package --- Summary
+;;; Commentary:
+;;; Customization of programming language modes
 
-(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))
-(add-hook 'org-mode-hook '(lambda () (visual-line-mode t) ) )
-(add-hook 'LaTeX-mode-hook '(lambda ()
-			      (visual-line-mode 1)
-			      (sentence-highlight-mode)))
+;;; Code: 
+(load-library "google-c-style")
 
-(require 'cmake-mode)
-(setq auto-mode-alist
-      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-								("Rakefile" . ruby-mode)
-								("\\.cmake\\'" . cmake-mode))
-							auto-mode-alist))
-
+;;;;;;;;;;;;;;
+;;; C++
+(defun brandon-c++-mode ()
+  "C++ mode made to fit the way I like it."
+  (interactive)
+  (c++-mode)
+  (subword-mode)
+  (google-set-c-style)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)
+  (whitespace-mode 1)
+  )
 ;;; C++ mode hacks for broken font locking
 (require 'font-lock)
 (defun --copy-face (new-face face)
@@ -28,7 +32,6 @@
              'font-lock-comment-face)
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
-
 (add-hook 'c++-mode-hook
           '(lambda()
              ;; In theory, we could place some regexes into `c-mode-common-hook'. But note that their
@@ -52,52 +55,172 @@
                     ))
              ) t)
 
-(require 'flymake)
-(require 'jedi)
-(add-hook 'python-mode-hook 'auto-complete-mode)
-(add-hook 'python-mode-hook 'jedi:ac-setup)
-
-(require 'markdown-mode)
-(require 'yaml-mode)
-(require 'protobuf-mode)
-
-(require 'cpputils-cmake)
-(add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
-(add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
-
-;; OPTIONAL, somebody reported that they can use this package with Fortran
-(add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
-
-;;; Configure cpputils-cmake for use with rpg-cmake (def_library/def_executable)
-(setq cppcm-cmake-target-regex
-      "^\s*[^#]*\s*\\(\\(?:add\\|def\\)_\\(?:executable\\|library\\)\\)\s*(\\(\s*[^\s]+\\)")
-(setq cppcm-cmake-exe-regex "^\\(?:def\\|add\\)_executable")
-
-;; ;; OPTIONAL, avoid typing full path when starting gdb
-(global-set-key (kbd "C-c C-g")
-		'(lambda ()(interactive) (gud-gdb (concat "gdb --fullname "
-							  (cppcm-get-exe-path-current-buffer)))))
-
+;;;;;;;;;;;;;;
+;;; C
+(defun brandon-c-mode ()
+  "C mode made to fit the way I like it."
+  (interactive)
+  (c-mode)
+  (subword-mode)
+  (google-set-c-style)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)
+  (whitespace-mode 1)
+  )
+(c-add-style "my-c-style"
+             '("BSD"
+	       (c-offsets-alist .((innamespace . 0)))))
+(setq-default c-basic-offset 4)
+(setq c-doc-comment-style 'javadoc)
+(setq whitespace-style (quote (face tabs trailing space-before-tab tab-mark lines)))
+(setq windmove-wrap-around t)
 ;;; Switching between .h and .cc modes
 (defun switch-between-h-and-cc ()
   "Switch between a header (.h) and an C++ implementation (.cc/.cpp) file using mk-project support"
   (interactive)
   (let* ((file (file-name-base))
-				 (ext (file-name-extension (buffer-file-name)))
-				 (header-regex "[h|hpp]")
-				 (impl-regex "[cc|cpp|cxx|c]")
-				 (newfile (concat file (if (string-match "h" ext)
-																	 (concat "\." impl-regex)
-																 (concat "\." header-regex)))))
+	 (ext (file-name-extension (buffer-file-name)))
+	 (header-regex "[h|hpp]")
+	 (impl-regex "[cc|cpp|cxx|c]")
+	 (newfile (concat file (if (string-match "h" ext)
+				   (concat "\." impl-regex)
+				 (concat "\." header-regex)))))
     (project-find-file newfile)))
-
 (global-set-key (kbd "M-s") 'switch-between-h-and-cc)
 
-(setq cppcm-write-flymake-makefile nil)
+;;;;;;;;;;;;;;
+;;; Python
+(defun brandon-python-mode ()
+  (interactive)
+  (python-mode)
+  (subword-mode)
+  (setq tab-width 4)
+  (setq c-basic-offset 4)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)
+  (setq-default tab-width 2)
+  (whitespace-mode 1)
+  (setq compile-command "python ")
+  )
+(add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))
+(require 'jedi)
+(add-hook 'python-mode-hook 'auto-complete-mode)
+(add-hook 'python-mode-hook 'jedi:ac-setup)
 
+;;;;;;;;;;;;;;
+;;; Java
+(defun brandon-java-mode ()
+  (interactive)
+  (java-mode)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (google-set-c-style)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
+;;;;;;;;;;;;;;
+;;; Matlab
+(matlab-mode)
+
+;;;;;;;;;;;;;;
+;;; CUDA
+(defun brandon-cuda-mode ()
+  (interactive)
+  (cuda-mode)
+  (google-set-c-style)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (setq tab-width 2)
+  (setq-default tab-width 2)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
+;;;;;;;;;;;;;;
+;;; Javascript
+(defun brandon-javascript-mode ()
+  (interactive)
+  (javascript-mode)
+  (google-set-c-style)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (setq tab-width 2)
+  (setq-default tab-width 2)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
+;;;;;;;;;;;;;;
+;;; HTML
+(defun brandon-html-mode ()
+  (interactive)
+  (html-mode)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (setq tab-width 2)
+  (setq-default tab-width 2)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
+;;;;;;;;;;;;;;
+;;; CSS
+(defun brandon-css-mode ()
+  (interactive)
+  (css-mode)
+  (subword-mode) ; Uncomment to treat camelText words as separate
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)		
+  (whitespace-mode 1)
+  )
+
+;;;;;;;;;;;;;;
+;;; Apply all modes
+(setq auto-mode-alist (append '(("\\.cpp$" . brandon-c++-mode)
+				("\\.cc$" . brandon-c++-mode)
+				("\\.hpp$" . brandon-c++-mode)
+				("\\.h$" . brandon-c++-mode)
+				("\\.py$" . brandon-python-mode)
+				("\\.java$" . brandon-java-mode)
+				("\\.m$" . brandon-matlab-mode)
+				("\\.cu$" . brandon-cuda-mode)
+				("\\.cuh$" . brandon-cuda-mode)
+				("\\.html$" . brandon-html-mode)
+				("\\.css$" . brandon-css-mode)
+				("\\.c$" . brandon-c-mode)
+				) auto-mode-alist))
+
+;;;;;;;;;;;;;;
+;;; Miscellaneous
+(add-hook 'org-mode-hook '(lambda () (visual-line-mode t) ) )
+(add-hook 'LaTeX-mode-hook '(lambda ()
+			      (visual-line-mode 1)
+			      (sentence-highlight-mode)))
+(require 'cmake-mode)
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+		("Rakefile" . ruby-mode)
+		("\\.cmake\\'" . cmake-mode))
+	      auto-mode-alist))
 (autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
 (require 'andersl-cmake-font-lock)
-(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)
+(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)x
+(require 'markdown-mode)
+(require 'yaml-mode)
+(require 'protobuf-mode)
+(require 'flymake)
+
+;;; cpp utils
+(require 'cpputils-cmake)
+(add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
+(add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
+;;; Configure cpputils-cmake for use with rpg-cmake (def_library/def_executable)
+(setq cppcm-cmake-target-regex
+      "^\s*[^#]*\s*\\(\\(?:add\\|def\\)_\\(?:executable\\|library\\)\\)\s*(\\(\s*[^\s]+\\)")
+(setq cppcm-cmake-exe-regex "^\\(?:def\\|add\\)_executable")
+(add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
+(setq cppcm-write-flymake-makefile nil)
 
 (provide 'my-languages)
 ;;; my-languages.el ends here

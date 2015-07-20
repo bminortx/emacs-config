@@ -25,21 +25,10 @@
 (define-key global-map [f2] 'eshell)  ;; Use multi-term, alternatively
 (define-key global-map [f5] 'linum-mode)
 (define-key global-map [f6] 'compile)
-(global-set-key "\C-x\C-m" 'compile)
 (define-key global-map [f7] 'recompile)
-(setq compilation-always-kill t)
-(setq compilation-skip-threshold 2)
 (define-key global-map [f8] 'next-error)
 (define-key global-map [f9] 'run-unit-tests)
 (define-key global-map [f11] 'toggle-fullscreen)
-
-;;;;;;;;;;;;;;;;
-;;; Compilation Tests
-(setq ring-bell-function 'ignore)
-;; Avoid typing full path when starting gdb
-(global-set-key (kbd "C-c C-g")
-		'(lambda ()(interactive) (gud-gdb (concat "gdb --fullname "
-							  (cppcm-get-exe-path-current-buffer)))))
 
 ;;;;;;;;;;;;;;;;
 ;;; Auto-complete
@@ -52,21 +41,6 @@
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)
-
-;;;;;;;;;;;;;;;;
-;;; Terminal Settings
-(require 'multi-term)
-(add-hook 'term-mode-hook
-  (lambda()
-    (local-unset-key (kbd "<tab>"))))
-(defadvice term-char-mode (after term-char-mode-fixes ())
-  (set (make-local-variable 'cua-mode) nil)
-  (set (make-local-variable 'transient-mark-mode) nil)
-  (set (make-local-variable 'global-hl-line-mode) nil)
-  (ad-activate 'term-char-mode)
-  (term-set-escape-char ?\C-x))
-(unwind-protect
-    (global-set-key (kbd "<XF86Launch5>") 'multi-term))
 
 ;;;;;;;;;;;
 ;;; Searching Files - grep, search

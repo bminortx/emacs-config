@@ -205,12 +205,11 @@
 	      auto-mode-alist))
 (autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
 (require 'andersl-cmake-font-lock)
-(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)x
+(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)
 (require 'markdown-mode)
 (require 'yaml-mode)
 (require 'protobuf-mode)
 (require 'flymake)
-
 ;;; cpp utils
 (require 'cpputils-cmake)
 (add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
@@ -221,6 +220,22 @@
 (setq cppcm-cmake-exe-regex "^\\(?:def\\|add\\)_executable")
 (add-hook 'c90-mode-hook (lambda () (cppcm-reload-all)))
 (setq cppcm-write-flymake-makefile nil)
+
+;;;;;;;;;;;;;;;;
+;;; Terminal Settings
+(require 'multi-term)
+(add-hook 'term-mode-hook
+	  (lambda()
+	    (local-unset-key (kbd "<tab>"))))
+(defadvice term-char-mode (after term-char-mode-fixes ())
+  (set (make-local-variable 'cua-mode) nil)
+  (set (make-local-variable 'transient-mark-mode) nil)
+  (set (make-local-variable 'global-hl-line-mode) nil)
+  (ad-activate 'term-char-mode)
+  (term-set-escape-char ?\C-x))
+(unwind-protect
+    (global-set-key (kbd "<XF86Launch5>") 'multi-term))
+
 
 (provide 'my-languages)
 ;;; my-languages.el ends here

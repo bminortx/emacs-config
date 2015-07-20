@@ -23,7 +23,7 @@
 (require 'my-env)
 (require 'my-global-bindings)
 (require 'my-languages)
-(require 'my-vcs)
+(require 'my-dev)
 (require 'my-editing)
 (require 'my-projects)
 (require 'my-fun-packages)

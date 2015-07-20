@@ -7,13 +7,9 @@ My preferred IDE, as customized by me. Despite the fact that it's incredibly unc
 - Download [Emacs](https://www.gnu.org/software/emacs/emacs.html)
 - Clone this repo into ~/.emacs.d/
 - Edit the first line of ~/.emacs to find the init-emacs file in this repo:
-
-	(load-file "~/.emacs.d/emacs-config/init-emacs.el")
-
+```(load-file "~/.emacs.d/emacs-config/init-emacs.el")```
 - Download all dependencies by running the handy script:
-
-	~/emacs.d/emacs-config/update-submodules.sh
-
+```~/emacs.d/emacs-config/update-submodules.sh```
 - Open Emacs. It'll download all the packages it needs
 - You should be ready to go!
 

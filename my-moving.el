@@ -1,6 +1,9 @@
 ;;; package --- Summary
 ;;; Commentary: 
-;;----Moving around---
+;;; Moving around files and buffers
+
+(require 'uniquify)
+(require 'workgroups)
 
 ;;; Code:
 
@@ -27,10 +30,8 @@
 (global-set-key (kbd "<C-S-iso-lefttab>") 'move-cursor-previous-pane)
 (global-set-key (kbd "<C-tab>") 'move-cursor-next-pane)
 ;;; Save your windows, if you want
-(require 'workgroups)
 (workgroups-mode 1)
 (setq wg-prefix-key (kbd "C-z"))
-(require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 
 ;;;;;;;;;;;;;;;;

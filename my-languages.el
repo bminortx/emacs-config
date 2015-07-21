@@ -2,8 +2,20 @@
 ;;; Commentary:
 ;;; Customization of programming language modes
 
-;;; Code: 
 (load-library "google-c-style")
+(require 'andersl-cmake-font-lock)
+(require 'cmake-mode)
+(require 'cpputils-cmake)
+(require 'flymake)
+(require 'font-lock)
+(require 'jedi)
+(require 'markdown-mode)
+(require 'multi-term)
+(require 'paredit)
+(require 'protobuf-mode)
+(require 'yaml-mode)
+
+;;; Code: 
 
 ;;;;;;;;;;;;;;
 ;;; C++
@@ -18,7 +30,6 @@
   (whitespace-mode 1)
   )
 ;;; C++ mode hacks for broken font locking
-(require 'font-lock)
 (defun --copy-face (new-face face)
   "Define NEW-FACE from existing FACE."
   (copy-face face new-face)
@@ -110,7 +121,7 @@
   (setq compile-command "python ")
   )
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))
-(require 'jedi)
+
 (add-hook 'python-mode-hook 'auto-complete-mode)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 
@@ -184,7 +195,7 @@
 
 ;;;;;;;;;;;;;;
 ;;; Lisp
-(require 'paredit)
+
 (setq my-lisp-par-hook #'(lambda ()
 			   (paredit-mode 1)
 			   (autopair-mode -1)))
@@ -213,21 +224,17 @@
 (add-hook 'LaTeX-mode-hook '(lambda ()
 			      (visual-line-mode 1)
 			      (sentence-highlight-mode)))
-(require 'cmake-mode)
+
 (setq auto-mode-alist
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
 		("Rakefile" . ruby-mode)
 		("\\.cmake\\'" . cmake-mode))
 	      auto-mode-alist))
 (autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
-(require 'andersl-cmake-font-lock)
 (add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)
-(require 'markdown-mode)
-(require 'yaml-mode)
-(require 'protobuf-mode)
-(require 'flymake)
+
 ;;; cpp utils
-(require 'cpputils-cmake)
+
 (add-hook 'c-mode-hook (lambda () (cppcm-reload-all)))
 (add-hook 'c++-mode-hook (lambda () (cppcm-reload-all)))
 ;;; Configure cpputils-cmake for use with rpg-cmake (def_library/def_executable)
@@ -239,7 +246,7 @@
 
 ;;;;;;;;;;;;;;;;
 ;;; Terminal Settings
-(require 'multi-term)
+
 (add-hook 'term-mode-hook
 	  (lambda()
 	    (local-unset-key (kbd "<tab>"))))

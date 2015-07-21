@@ -2,16 +2,17 @@
 ;;; Commentary:
 ;; Colorizes various aspects of the Emacs buffer
 
-;;; Code:
-;;; All of our themes
 (load-file "~/.emacs.d/emacs-config/my-themes/almost-monokai/color-theme-almost-monokai.el")
+(require 'ansi-color)
 (require 'color-theme)
 (require 'color-theme-solarized)
 (require 'color-theme-almost-monokai)
 (require 'color-theme-sanityinc-tomorrow)
+(require 'column-marker)
+
+;;; Code:
 
 ;;; Switch our color with a keybinding
-(require 'color-theme)
 (setq my-color-themes (list 'color-theme-sanityinc-tomorrow-day
 			    'color-theme-sanityinc-tomorrow-night
 			    'color-theme-almost-monokai
@@ -53,7 +54,6 @@
 (setq pop-up-windows nil)
 
 ;;; Colorize compilation
-(require 'ansi-color)
 (defun colorize-compilation-buffer ()
   (toggle-read-only)
   (ansi-color-apply-on-region (point-min) (point-max))
@@ -70,7 +70,6 @@
 (show-paren-mode t)
 (setq blink-cursor-mode nil)
 (column-number-mode 1)
-(require 'column-marker)
 (add-hook 'c++-mode-hook (lambda () (interactive) (column-marker-1 80)))
 
 ;; Modeline Appearance

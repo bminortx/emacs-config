@@ -3,6 +3,9 @@
 ;;; Settings for both the global (host) environment, and
 ;;; the Emacs environment
 
+(require 'saveplace)
+(require 'desktop)
+
 ;;; Code:
 
 ;;;;;;;;;;;;;;;;;
@@ -31,9 +34,7 @@
 (provide 'desktop-autosave)
 (eval-when-compile
   (require 'cl))
-(require 'saveplace)
 (setq-default save-place t)
-(require 'desktop)
 (setq desktop-dirname             "~/.emacs.d/"
       desktop-base-file-name      ".emacs.desktop"
       desktop-base-lock-name      "lock"

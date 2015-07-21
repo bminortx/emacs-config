@@ -2,6 +2,11 @@
 ;;; Commentary:
 ;;; All of the bindings for global modes (usually)
 
+(require 'auto-complete)
+(require 'auto-complete-config)
+(require 'unit-test)
+(require 'yasnippet)
+
 ;;; Code:
 ;; Typing "yes" or "no" takes too long---use "y" or "n"
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -21,7 +26,6 @@
 
 ;;;;;;;;;;;;;;;;
 ;;; Function Keys
-(require 'unit-test)
 (define-key global-map [f2] 'eshell)  ;; Use multi-term, alternatively
 (define-key global-map [f5] 'linum-mode)
 (define-key global-map [f6] 'compile)
@@ -33,11 +37,8 @@
 ;;;;;;;;;;;;;;;;
 ;;; Auto-complete
 ;;; Note: Not set up, but would be useful
-(require 'yasnippet)
-(require 'auto-complete)
 (add-to-list 'ac-dictionary-directories
              "~/.emacs.d/emacs-config/plugins/auto-complete/dict/")
-(require 'auto-complete-config)
 (ac-config-default)
 (ac-set-trigger-key "TAB")
 (setq ac-auto-start nil)

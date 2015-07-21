@@ -3,6 +3,9 @@
 ;;; init-emacs.el loads all other packages and configuration files,
 ;;; then starts Emacs the way we want it.
 
+(require 'tramp)
+(require 'package)
+
 ;;; Code:
 (let ((default-directory "~/.emacs.d/"))
   (normal-top-level-add-to-load-path '("."))
@@ -10,8 +13,6 @@
 (server-start)
 
 ;; basic initialization, (require) non-ELPA packages, etc.
-(require 'tramp)
-(require 'package)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/")
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))

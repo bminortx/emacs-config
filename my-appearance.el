@@ -9,6 +9,7 @@
 (require 'color-theme-almost-monokai)
 (require 'color-theme-sanityinc-tomorrow)
 (require 'column-marker)
+(require 'focus)
 
 ;;; Code:
 
@@ -52,6 +53,7 @@
 (setq display-buffer-function nil)
 (setq display-buffer-reuse-frames t)
 (setq pop-up-windows nil)
+(setq focus-dimness 1)
 
 ;;; Colorize compilation
 (defun colorize-compilation-buffer ()

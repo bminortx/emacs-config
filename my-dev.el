@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; The common development functionality for Emacs (git, testing, etc)
 
-(require 'anything)
 (require 'exec-path-from-shell)
 (require 'magit)
 (require 'notifications)
@@ -14,7 +13,6 @@
 ;;;;;;;;;;;;;;;;
 ;;; Git
 (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
-
 (global-set-key "\C-x\C-i" 'magit-status)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
 

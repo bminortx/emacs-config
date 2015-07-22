@@ -3,7 +3,6 @@
 (require 'cl-lib)
 (defvar my-packages '(
 		      ack-and-a-half
-		      anything
 		      auctex
 		      auto-complete
 		      auto-indent-mode
@@ -20,8 +19,7 @@
 		      desktop
 		      expand-region
 		      exec-path-from-shell
-		      flycheck
-		      flycheck-google-cpplint
+		      focus
 		      gist
 		      groovy-mode
 		      guide-key

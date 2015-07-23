@@ -25,7 +25,7 @@
 ;;; See also my-global-bindings:function keys
 (global-set-key "\C-x\C-m" 'compile)
 (setq compilation-always-kill t)
-(setq compilation-skip-threshold 0)
+(setq compilation-skip-threshold 2)
 
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished,
@@ -33,7 +33,6 @@ close the *compilation* buffer if the compilation is successful,
 and set the focus back to Emacs frame"
   (if (string-match "^finished" msg)
       (progn
-	(delete-windows-on buffer)
 	;; Notify on compilation success
 	(notifications-notify
 	 :title "Compilation Success"

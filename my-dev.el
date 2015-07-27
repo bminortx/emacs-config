@@ -26,6 +26,8 @@
 (global-set-key "\C-x\C-m" 'compile)
 (setq compilation-always-kill t)
 (setq compilation-skip-threshold 2)
+;;; Stop scrolling at the first error
+(setq compilation-scroll-output 'first-error)
 
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished,

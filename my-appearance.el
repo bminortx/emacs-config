@@ -54,6 +54,7 @@
 (setq display-buffer-reuse-frames t)
 (setq pop-up-windows nil)
 (setq focus-dimness 1)
+(setq whitespace-mode nil)
 
 ;;; Colorize compilation
 (defun colorize-compilation-buffer ()

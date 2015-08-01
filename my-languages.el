@@ -27,7 +27,6 @@
   (google-set-c-style)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
-  (whitespace-mode 1)
   )
 ;;; C++ mode hacks for broken font locking
 (defun --copy-face (new-face face)
@@ -76,7 +75,6 @@
   (google-set-c-style)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
-  (whitespace-mode 1)
   )
 (c-add-style "my-c-style"
              '("BSD"
@@ -117,11 +115,9 @@
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
   (setq-default tab-width 2)
-  (whitespace-mode 1)
   (setq compile-command "python ")
   )
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))
-
 (add-hook 'python-mode-hook 'auto-complete-mode)
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 
@@ -134,7 +130,6 @@
   (google-set-c-style)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)		
-  (whitespace-mode 1)
   )
 
 ;;;;;;;;;;;;;;
@@ -152,7 +147,6 @@
   (setq-default tab-width 2)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)		
-  (whitespace-mode 1)
   )
 
 ;;;;;;;;;;;;;;
@@ -166,7 +160,6 @@
   (setq-default tab-width 2)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)		
-  (whitespace-mode 1)
   )
 
 ;;;;;;;;;;;;;;
@@ -179,7 +172,6 @@
   (setq-default tab-width 2)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)		
-  (whitespace-mode 1)
   )
 
 ;;;;;;;;;;;;;;
@@ -189,8 +181,7 @@
   (css-mode)
   (subword-mode) ; Uncomment to treat camelText words as separate
   (which-function-mode 1)
-  (setq indent-tabs-mode nil)		
-  (whitespace-mode 1)
+  (setq indent-tabs-mode nil)  
   )
 
 ;;;;;;;;;;;;;;

@@ -115,6 +115,7 @@
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
   (setq-default tab-width 2)
+  (setq python-indent-offset 4) 
   (setq compile-command "python ")
   )
 (add-hook 'python-mode-hook '(lambda () (define-key python-mode-map "\C-c\C-k" 'kill-region)))

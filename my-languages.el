@@ -176,7 +176,7 @@
   )
 
 ;;;;;;;;;;;;;;
-;;; CSS
+;;; CSS and Sass
 (defun brandon-css-mode ()
   (interactive)
   (css-mode)
@@ -184,6 +184,8 @@
   (which-function-mode 1)
   (setq indent-tabs-mode nil)  
   )
+
+(setq scss-compile-at-save nil) 
 
 ;;;;;;;;;;;;;;
 ;;; Lisp

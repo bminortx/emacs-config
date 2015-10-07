@@ -30,7 +30,7 @@
 
 (which-function-mode)
 (powerline-default-theme)
-(add-to-list 'default-frame-alist '(font . "Ubuntu Mono-9"))
+(add-to-list 'default-frame-alist '(font . "Hack-7.5"))
 
 (cd "~/")
 (provide 'init-emacs)

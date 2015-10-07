@@ -15,7 +15,12 @@
 (require 'protobuf-mode)
 (require 'yaml-mode)
 
-;;; Code: 
+;;; Code:
+
+;;; Comments wrap
+(defun comment-auto-fill ()
+	(setq-local comment-auto-fill-only-comments t)
+	(auto-fill-mode 1))
 
 ;;;;;;;;;;;;;;
 ;;; C++
@@ -202,6 +207,9 @@
 				("\\.cc$" . brandon-c++-mode)
 				("\\.hpp$" . brandon-c++-mode)
 				("\\.h$" . brandon-c++-mode)
+				;; For OpenGL Shaders
+				("\\.vert$" . brandon-c++-mode)
+				("\\.frag$" . brandon-c++-mode)
 				("\\.py$" . brandon-python-mode)
 				("\\.java$" . brandon-java-mode)
 				("\\.m$" . brandon-matlab-mode)

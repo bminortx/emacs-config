@@ -26,6 +26,8 @@
 		      haml-mode
 		      handlebars-mode
 		      haskell-mode
+		      ibuffer
+		      ibuffer-vc
 		      inf-ruby
 		      jedi
 		      jenkins-watch

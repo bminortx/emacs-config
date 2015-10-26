@@ -128,6 +128,42 @@
 (add-hook 'python-mode-hook 'jedi:ac-setup)
 
 ;;;;;;;;;;;;;;
+;;; Objective-C
+;;; http://bretthutley.com/programming/emacs/integrating-emacs-and-xcode/
+(defun brandon-objc-mode ()
+  "C++ mode made to fit the way I like it."
+  (interactive)
+  (objc-mode)
+  (subword-mode)
+  (google-set-c-style)
+  (which-function-mode 1)
+  (setq indent-tabs-mode nil)
+  )
+
+(defun bh-choose-header-mode ()
+  (interactive)
+  (if (string-equal (substring (buffer-file-name) -2) ".h")
+      (progn
+        ;; OK, we got a .h file, if a .m file exists we'll assume it's
+	;; an objective c file. Otherwise, we'll look for a .cpp file.
+        (let ((dot-m-file (concat (substring (buffer-file-name) 0 -1) "m"))
+              (dot-cpp-file (concat (substring (buffer-file-name) 0 -1) "cpp")))
+          (if (file-exists-p dot-m-file)
+              (progn
+                (objc-mode)
+                )
+            (if (file-exists-p dot-cpp-file)
+                (c++-mode)
+              )
+            )
+          )
+        )
+    )
+  )
+
+(add-hook 'find-file-hook 'bh-choose-header-mode)
+
+;;;;;;;;;;;;;;
 ;;; Java
 (defun brandon-java-mode ()
   (interactive)
@@ -207,9 +243,8 @@
 				("\\.cc$" . brandon-c++-mode)
 				("\\.hpp$" . brandon-c++-mode)
 				("\\.h$" . brandon-c++-mode)
-				;; For OpenGL Shaders
-				("\\.vert$" . brandon-c++-mode)
-				("\\.frag$" . brandon-c++-mode)
+				("\\.m$" . brandon-objc-mode)				
+				("\\.mm$" . brandon-objc-mode)
 				("\\.py$" . brandon-python-mode)
 				("\\.java$" . brandon-java-mode)
 				("\\.m$" . brandon-matlab-mode)
@@ -218,6 +253,9 @@
 				("\\.html$" . brandon-html-mode)
 				("\\.css$" . brandon-css-mode)
 				("\\.c$" . brandon-c-mode)
+				;; For OpenGL Shaders
+				("\\.vert$" . brandon-c++-mode)
+				("\\.frag$" . brandon-c++-mode)
 				) auto-mode-alist))
 
 ;;;;;;;;;;;;;;

@@ -29,6 +29,29 @@
 ;;; Stop scrolling at the first error
 (setq compilation-scroll-output 'first-error)
 
+;;; XCodebuild for .m files
+(defun bh-compile ()
+  (interactive)
+  (let ((df (directory-files "."))
+        (has-proj-file nil)
+        )
+    (while (and df (not has-proj-file))
+      (let ((fn (car df)))
+        (if (> (length fn) 10)
+            (if (string-equal (substring fn -10) ".xcodeproj")
+                (setq has-proj-file t)
+              )
+          )
+        )
+      (setq df (cdr df))
+      )
+    (if has-proj-file
+        (compile "xcodebuild -configuration Debug")
+      (compile "make")
+      )
+    )
+  )
+
 (defun notify-compilation-result(buffer msg)
   "Notify that the compilation is finished,
 close the *compilation* buffer if the compilation is successful,

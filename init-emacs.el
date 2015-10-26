@@ -30,7 +30,7 @@
 
 (which-function-mode)
 (powerline-default-theme)
-(add-to-list 'default-frame-alist '(font . "Hack-7.5"))
+(add-to-list 'default-frame-alist '(font . "Hack-10"))
 
 (cd "~/")
 (provide 'init-emacs)

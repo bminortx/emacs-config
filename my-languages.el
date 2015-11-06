@@ -256,6 +256,7 @@
 				;; For OpenGL Shaders
 				("\\.vert$" . brandon-c++-mode)
 				("\\.frag$" . brandon-c++-mode)
+				("\\.geom$" . brandon-c++-mode)
 				) auto-mode-alist))
 
 ;;;;;;;;;;;;;;

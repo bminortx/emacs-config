@@ -13,3 +13,6 @@
 [submodule "plugins/cmake-font-lock"]
 	path = plugins/cmake-font-lock
 	url = https://github.com/Lindydancer/cmake-font-lock.git
+[submodule "my-themes/emacs-color-theme-solarized"]
+	path = my-themes/emacs-color-theme-solarized
+	url = https://github.com/sellout/emacs-color-theme-solarized.git

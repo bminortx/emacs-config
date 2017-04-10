@@ -17,10 +17,12 @@
 
 ;;; Code:
 
+(setq indent-tabs-mode nil)
+
 ;;; Comments wrap
 (defun comment-auto-fill ()
-	(setq-local comment-auto-fill-only-comments t)
-	(auto-fill-mode 1))
+  (setq-local comment-auto-fill-only-comments t)
+  (auto-fill-mode 1))
 
 ;;;;;;;;;;;;;;
 ;;; C++
@@ -32,6 +34,8 @@
   (google-set-c-style)
   (which-function-mode 1)
   (setq indent-tabs-mode nil)
+  (setq-default c-basic-offset 4)
+  (c-indent-comment-alist . ((other . (space . 4))))
   )
 ;;; C++ mode hacks for broken font locking
 (defun --copy-face (new-face face)
@@ -101,13 +105,13 @@
 				 (concat "\." header-regex)))))
     (project-find-file newfile)))
 (global-set-key (kbd "M-s") 'switch-between-h-and-cc)
-(add-hook 'c-mode-common-hook
-	  (lambda()
-	    (add-hook 'write-contents-functions
-		      (lambda()
-			(save-excursion
-			  (delete-trailing-whitespace))
-			(indent-for-tab-command)))))
+;; (add-hook 'c-mode-common-hook
+;; 	  (lambda()
+;; 	    (add-hook 'write-contents-functions
+;; 		      (lambda()
+;; 			(save-excursion
+;; 			  (delete-trailing-whitespace))
+;; 			(indent-for-tab-command)))))
 
 ;;;;;;;;;;;;;;
 ;;; Python
@@ -243,13 +247,13 @@
 				("\\.cc$" . brandon-c++-mode)
 				("\\.hpp$" . brandon-c++-mode)
 				("\\.h$" . brandon-c++-mode)
-				("\\.m$" . brandon-objc-mode)				
+				("\\.m$" . brandon-objc-mode)
 				("\\.mm$" . brandon-objc-mode)
 				("\\.py$" . brandon-python-mode)
 				("\\.java$" . brandon-java-mode)
 				("\\.m$" . brandon-matlab-mode)
-				("\\.cu$" . brandon-cuda-mode)
-				("\\.cuh$" . brandon-cuda-mode)
+				("\\.cu$" . brandon-c++-mode)
+				("\\.cuh$" . brandon-c++-mode)
 				("\\.html$" . brandon-html-mode)
 				("\\.css$" . brandon-css-mode)
 				("\\.c$" . brandon-c-mode)
@@ -257,6 +261,7 @@
 				("\\.vert$" . brandon-c++-mode)
 				("\\.frag$" . brandon-c++-mode)
 				("\\.geom$" . brandon-c++-mode)
+				("\\.geom_ext$" . brandon-c++-mode)			     
 				) auto-mode-alist))
 
 ;;;;;;;;;;;;;;

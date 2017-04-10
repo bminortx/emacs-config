@@ -46,5 +46,7 @@
   (desktop-save desktop-dirname))
 (add-hook 'auto-save-hook 'desktop-autosave-save)
 
+(global-unset-key "\M-`")
+
 (provide 'my-env)
 ;;; my-env.el ends here

@@ -1,31 +1,33 @@
 ;;; package --- Summary
 ;;; Commentary:
-;; Colorizes various aspects of the Emacs buffer
+;;; Colorizes various aspects of the Emacs buffer
+
 
 (load-file "~/.emacs.d/emacs-config/my-themes/almost-monokai/color-theme-almost-monokai.el")
 (require 'ansi-color)
 (require 'color-theme)
-(require 'color-theme-solarized)
 (require 'color-theme-almost-monokai)
 (require 'color-theme-sanityinc-tomorrow)
+(require 'color-theme-sanityinc-solarized)
 (require 'column-marker)
 (require 'focus)
 
 ;;; Code:
+(color-theme-initialize)
 
 ;;; Switch our color with a keybinding
-(setq my-color-themes (list 'color-theme-sanityinc-tomorrow-day
-			    'color-theme-sanityinc-tomorrow-night
-			    'color-theme-almost-monokai
-			    'color-theme-solarized-light
-			    'color-theme-solarized-dark))
-(defun my-theme-set-default () ; Set the first row
-  (interactive)
-  (setq theme-current my-color-themes)
-  (funcall (car theme-current)))
-(defun my-describe-theme () ; Show the current theme
-  (interactive)
-  (message "%s" (car theme-current)))
+(setq my-color-themes (list	
+		       'color-theme-subtle-hacker
+		       'color-theme-sanityinc-tomorrow-night
+		       'color-theme-sanityinc-solarized-light
+		       'color-theme-sanityinc-solarized-dark
+		       'color-theme-almost-monokai
+		       'color-theme-dark-blue2
+		       'color-theme-gnome2
+		       'color-theme-gray30
+		       'color-theme-late-night
+		       'color-theme-retro-green
+		       'color-theme-robin-hood))
 (defun my-theme-cycle ()
   (interactive)
   (setq theme-current (cdr theme-current))
@@ -34,22 +36,12 @@
   (funcall (car theme-current))
   (message "%S" (car theme-current)))
 
+;;; Initialization
 (setq theme-current my-color-themes)
-(setq color-theme-is-global nil) ; Initialization
-(my-theme-set-default)
+(setq color-theme-is-global t) 
 (define-key global-map [f12] 'my-theme-cycle)
+(color-theme-subtle-hacker)
 
-;; Turn on pretty font colors
-(global-font-lock-mode t)
-(setq font-lock-maximum-decoration 3)
-(setq frame-title-format
-      '(:eval
-        (if buffer-file-name
-            (replace-regexp-in-string
-             (getenv "HOME") "~"
-             (concat (file-name-directory buffer-file-name) "%b") )
-          (buffer-name)
-          )))
 (setq display-buffer-function nil)
 (setq display-buffer-reuse-frames t)
 (setq pop-up-windows nil)
@@ -74,15 +66,6 @@
 (setq blink-cursor-mode nil)
 (column-number-mode 1)
 (add-hook 'c++-mode-hook (lambda () (interactive) (column-marker-1 80)))
-
-;; Modeline Appearance
-(set-face-background 'mode-line "DarkOliveGreen2")
-(set-face-foreground 'mode-line "black")
-
-;;; Comments
-(set-face-foreground font-lock-comment-face "OrangeRed3")
-(set-face-foreground font-lock-comment-delimiter-face "OrangeRed4")
-(set-face-foreground font-lock-doc-face "OrangeRed3")
 
 (provide 'my-appearance)
 ;;; my-appearance.el ends here

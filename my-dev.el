@@ -15,6 +15,7 @@
 (when (featurep 'vc-git) (add-to-list 'vc-handled-backends 'git))
 (global-set-key "\C-x\C-i" 'magit-status)
 (setq magit-status-buffer-switch-function 'switch-to-buffer)
+(setq git-commit-fill-column 100)
 
 ;;;;;;;;;;;;;;;;
 ;;; Alarms
